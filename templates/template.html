@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <title>Análise de Crédito - Usando Machine Learning</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Análise de Crédito de Cliente</h1>
+      Informe os dados abaixo para verificar se o cliente terá ou não acesso ao crédito (empréstimo) solicitado.
+      <br><br>
+      <form action="/verificar" method="post">
+        <fieldset class="form-group">
+          <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadiosSexo" value="1" checked>
+                <label class="form-check-label">Masculino</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadiosSexo" value="0">
+                <label class="form-check-label">Feminino</label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Número de Dependentes:</label>
+          <div class="col-sm-3">
+            <input type="number" class="form-control" name="dependentes" min="0" max="5" value="0">
+          </div>
+        </div>
+
+        <fieldset class="form-group">
+          <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Casado(a)</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadiosCasado" value="1" checked>
+                <label class="form-check-label">Sim</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadiosCasado" value="0">
+                <label class="form-check-label">Não</label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="form-group row">
+          <div class="col-sm-2">Grau de Instrução</div>
+          <div class="col-sm-3">
+            <select name="educacao" class="form-control">
+              <option value="1">Graduado</option>
+              <option value="0">Não Graduado</option>
+            </select>
+          </div>
+        </div>
+
+        <fieldset class="form-group">
+          <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Trabalha por conta própria</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadiosTrabalhoProprio" value="1">
+                <label class="form-check-label">Sim</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadiosTrabalhoProprio" value="0" checked>
+                <label class="form-check-label">Não</label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Rendimento</label>
+          <div class="col-sm-3">
+            <input type="number" class="form-control" name="rendimento" value="0">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Valor do Empréstimo</label>
+          <div class="col-sm-3">
+            <input type="number" class="form-control" name="valoremprestimo" value="100" required>
+          </div>
+        </div>
+
+        <!-- Novo campo adicionado -->
+        <div class="form-group row">
+			<label class="col-sm-2 col-form-label">Área da Propriedade</label>
+			<div class="col-sm-3">
+			  <select name="property_area" class="form-control">
+				<option value="0">Rural</option>
+				<option value="1">Semiurbano</option>
+				<option value="2">Urbano</option>
+			  </select>
+			</div>
+		  </div>
+
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Verificar</button>
+          </div>
+        </div>
+      </form>
+
+      {% if classe == "1" %}
+        <div style="text-align:center">
+          <img src="static\aprovado.jpg" width="300px" height="175px">
+        </div>
+      {% elif classe == "0" %}
+        <div style="text-align:center">
+          <img src="static\reprovada.jpg" width="300px" height="175px">
+        </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
